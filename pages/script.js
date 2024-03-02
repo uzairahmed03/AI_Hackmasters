@@ -1,0 +1,20 @@
+document.addEventListener("DOMContentLoaded", function() {
+    fetchDataFromStackAI();
+});
+
+function fetchDataFromStackAI() {
+    // Replace this URL with your actual Stack AI URL
+    const stackAIUrl = "https://www.stack-ai.com/internal_ui/7d8464a4-a7cc-4f2c-bc5c-6037e038a0e8/a4f8f5b6-4856-4b5a-9b70-d010c987bb55/65e32637178e7dfcbbef555f";
+
+    // Fetch data from Stack AI
+    fetch(stackAIUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Display the data on the webpage
+            document.getElementById("stackAIData").innerHTML = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+            console.error('Error fetching data from Stack AI:', error);
+            document.getElementById("stackAIData").innerHTML = "Error fetching data from Stack AI. Check console for details.";
+        });
+}
